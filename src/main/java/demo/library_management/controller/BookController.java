@@ -3,8 +3,14 @@ package demo.library_management.controller;
 import demo.library_management.entity.Book;
 import demo.library_management.service.BookService;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
+@RestController
+@RequestMapping("/api/book")
 public class BookController {
     private final BookService bookService;
 
@@ -13,27 +19,36 @@ public class BookController {
     }
 
     // Create a new book
-    public void addBook(Book book) {
+    @PostMapping
+    public String addBook(@RequestBody Book book) {
         bookService.addBook(book);
+        return "User saved successfully!";
     }
 
     // Retrieve all books
+    @GetMapping
     public List<Book> getAllBooks() {
         return bookService.getAllBooks();
     }
 
     // Retrieve a book by ID
-    public Book getBookById(int id) {
+    @GetMapping("/{id}")
+    public Book getBookById(@PathVariable int id) {
         return bookService.getBookById(id);
     }
 
     // Update a book by ID
-    public void updateBook(int id, Book book) {
+    @PutMapping("/{id}")
+    public String updateBook(@PathVariable int id,@RequestBody Book book) {
         bookService.updateBook(id, book);
+        return "Update Success!!!";
     }
 
     // Delete a book by ID
-    public void deleteBook(int id) {
+    
+    @DeleteMapping("/{id}")
+    public String deleteBook(@PathVariable int id) {
         bookService.deleteBook(id);
+        return "Deleted sucessfully!!!";
     }
 }

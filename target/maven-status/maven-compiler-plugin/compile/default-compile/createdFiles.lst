@@ -3,6 +3,7 @@ demo\library_management\controller\BookController.class
 demo\library_management\service\BorrowService.class
 demo\library_management\entity\Book.class
 demo\demo\DemoApplication.class
+demo\library_management\repository\BookRepository$BookRowMapper.class
 demo\library_management\LibraryManagementApplication.class
 demo\library_management\service\MemberService.class
 demo\library_management\entity\Borrow.class
